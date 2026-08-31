@@ -34,6 +34,12 @@ Plataforma corporativa de **Business Intelligence (BI) e Inteligência de Negóc
 
 ---
 
+### 4. Admin Dashboard & Monitoramento de Recursos
+![Admin Dashboard e Métricas de Uso](docs/screenshots/admin-dashboard.png)
+*Painel administrativo com controle de telemetria, consumo de recursos e auditoria de requisições.*
+
+---
+
 ## ✨ Principais Funcionalidades
 
 - 💬 **Assistente Virtual Text-to-SQL RAG**: Faça perguntas em português simples (ex: *"Qual foi o projeto mais lucrativo em 2024?"*) e receba respostas analíticas instantâneas geradas com auxílio da LLM (Google Gemini).

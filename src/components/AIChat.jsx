@@ -127,8 +127,11 @@ function AIChat() {
     const { visualization, data, id, title } = item;
     const { type, xAxis, yAxis } = visualization;
 
+    // Garante que yAxisKeys seja sempre um Array
+    const yAxisKeys = Array.isArray(yAxis) ? yAxis : (yAxis ? [yAxis] : []);
+
     // Cores padrão vibrantes mas agradáveis
-    const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#0088FE', '#00C49F'];
+    const colors = ['#38bdf8', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#f472b6'];
 
     return (
       <div className="dashboard-card" key={id}>
@@ -171,7 +174,7 @@ function AIChat() {
                   contentStyle={{backgroundColor: '#fff', borderColor: '#e2e8f0', color: '#0f172a'}}
                 />
                 <Legend verticalAlign="top" height={36} />
-                {yAxis && yAxis.map((key, index) => (
+                {yAxisKeys.map((key, index) => (
                   <Bar key={key} dataKey={key} fill={colors[index % colors.length]} radius={[4, 4, 0, 0]}>
                     <LabelList 
                       dataKey={key} 
@@ -198,7 +201,7 @@ function AIChat() {
                   contentStyle={{backgroundColor: '#fff', borderColor: '#e2e8f0', color: '#0f172a'}}
                 />
                 <Legend verticalAlign="top" height={36} />
-                {yAxis && yAxis.map((key, index) => (
+                {yAxisKeys.map((key, index) => (
                   <Line 
                     key={key} 
                     type="monotone" 
