@@ -32,7 +32,13 @@ An enterprise-grade **Business Intelligence (BI) and Data Analytics Platform pow
 
 ---
 
-### 4. Enterprise Admin Dashboard & Token Cache Telemetry
+### 4. Pre-built Domain Analytics Dashboards
+![Pre-built Analytics Dashboards](docs/screenshots/prebuilt-dashboards.png)
+*Pre-configured domain-specific analytical modules providing instant reporting for key operational areas, including Hours Allocation (Estimated vs. Actual), Financial Margins, Sales Pipelines, and Supplier Expenditure.*
+
+---
+
+### 5. Enterprise Admin Dashboard & Token Cache Telemetry
 ![Admin Dashboard and Resource Monitoring](docs/screenshots/admin-dashboard.png)
 *Real-time administrative telemetry monitoring system costs, request audits, and **LLM Token Caching**. Context Caching reuses pre-tokenized database schema metadata (DDL) and prompt context across queries, reducing response latency by up to 80% and drastically minimizing API token costs.*
 
