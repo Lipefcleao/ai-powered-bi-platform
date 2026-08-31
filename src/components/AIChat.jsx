@@ -9,7 +9,7 @@ function AIChat() {
     if (saved) return JSON.parse(saved);
     return [{
       role: 'assistant',
-      content: `Olá! Sou a F.A.S.T AI, sua assistente conectada ao banco de dados. \n\nVocê pode me perguntar livremente sobre projetos, membros, tarefas e todas as tabelas mapeadas no DDL.`
+      content: `Olá! Sou a NovaBI AI, sua assistente conectada ao banco de dados. \n\nVocê pode me perguntar livremente sobre projetos, membros, tarefas e todas as tabelas mapeadas no DDL.`
     }];
   });
   
@@ -39,7 +39,7 @@ function AIChat() {
     if (window.confirm('Tem certeza que deseja apagar todo o histórico de chat e os gráficos gerados?')) {
       const defaultMessages = [{
         role: 'assistant',
-        content: `Olá! Sou a F.A.S.T AI, sua assistente conectada ao banco de dados. \n\nVocê pode me perguntar livremente sobre projetos, membros, tarefas e todas as tabelas mapeadas no DDL.`
+        content: `Olá! Sou a NovaBI AI, sua assistente conectada ao banco de dados. \n\nVocê pode me perguntar livremente sobre projetos, membros, tarefas e todas as tabelas mapeadas no DDL.`
       }];
       setMessages(defaultMessages);
       setDashboardItems([]);
@@ -334,9 +334,9 @@ function AIChat() {
                 <Send size={18} />
               </button>
             </div>
-            <p className="chat-disclaimer">
-              F.A.S.T AI pode cometer erros. Considere verificar as informações geradas através da query.
-            </p>
+            <div className="chat-footer-info">
+              <span>NovaBI AI pode cometer erros. Considere verificar as informações geradas através da query.</span>
+            </div>
           </div>
         </>
       )}

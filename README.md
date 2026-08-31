@@ -32,9 +32,9 @@ An enterprise-grade **Business Intelligence (BI) and Data Analytics Platform pow
 
 ---
 
-### 4. Pre-built Domain Analytics Dashboards
-![Pre-built Analytics Dashboards](docs/screenshots/prebuilt-dashboards.png)
-*Pre-configured domain-specific analytical modules providing instant reporting for key operational areas, including Hours Allocation (Estimated vs. Actual), Financial Margins, Sales Pipelines, and Supplier Expenditure.*
+### 4. Pre-built Domain Analytics Modules (FAQ Grid)
+![Pre-built Domain Analytics Grid](docs/screenshots/faq-cards-grid.png)
+*Pre-configured domain-specific analytical modules providing instant reporting across all key business areas, including Hours Allocation, Sales Pipeline, Supplier Expenses, Personnel Costs, Project Profitability, Task Productivity, Financial Results, Apportionment, and Resource Utilization.*
 
 ---
 

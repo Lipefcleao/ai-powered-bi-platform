@@ -48,7 +48,7 @@ function App() {
       <aside className="app-sidebar">
         <div className="sidebar-header">
           <div className="logo-icon">⚡</div>
-          <h2>F.A.S.T AI</h2>
+          <h2>NovaBI AI</h2>
         </div>
         
         <nav className="sidebar-nav">

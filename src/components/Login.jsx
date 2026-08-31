@@ -44,7 +44,7 @@ export default function Login({ onLoginSuccess }) {
       <div className="login-card">
         <div className="login-header">
           <div className="login-logo-icon">⚡</div>
-          <h1>F.A.S.T AI</h1>
+          <h1>NovaBI AI</h1>
           <p>Business Intelligence & Analytics Hub</p>
         </div>
 
