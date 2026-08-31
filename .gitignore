@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Build Outputs
+dist/
+build/
+
+# Metrics, Logs & Temp
+metrics.json
+*.log
+logs/
+coverage/
+.nyc_output/
+tmp/
+scratch/
+*.local
+
+# IDE & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
