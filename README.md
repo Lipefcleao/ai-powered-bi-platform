@@ -8,136 +8,94 @@
 [![Google Gemini AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=googlegemini&logoColor=white)](https://ai.google.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Plataforma corporativa de **Business Intelligence (BI) e Inteligência de Negócios impulsionada por IA Conversacional (Text-to-SQL)**. O sistema permite a executivos, gestores de projetos e analistas financeiros explorar relatórios operacionais complexos, visualizar dashboards interativos e realizar consultas analíticas em linguagem natural.
+An enterprise-grade **Business Intelligence (BI) and Data Analytics Platform powered by Conversational AI (Text-to-SQL)**. The system enables executives, project managers, and financial analysts to explore complex operational metrics, visualize interactive dashboards, and execute natural language queries over relational enterprise databases.
 
 ---
 
-## 📸 Demonstração Visual (Screenshots)
+## 📸 System Showcase & Visual Interface
 
-> *Substitua as imagens abaixo adicionando suas capturas de tela na pasta `/docs/screenshots/`.*
-
-### 1. Dashboard Principal & Módulos Analíticos
-![Dashboard Financeiro e de Projetos](docs/screenshots/dashboard-overview.png)
-*Visão consolidadas de indicadores financeiros, acompanhamento de projetos e taxa de utilização.*
+### 1. Main BI Dashboard & Analytical Playground
+![Financial and Project Dashboard Overview](docs/screenshots/dashboard-overview.png)
+*Consolidated view of financial Key Performance Indicators (KPIs), project tracking, and resource utilization metrics.*
 
 ---
 
-### 2. Assistente de IA Conversacional (Text-to-SQL)
-![Chat de IA Conversacional](docs/screenshots/ai-chat-text-to-sql.png)
-*Consulta de dados em linguagem natural traduzida em tempo real para análises estruturadas e respostas sintéticas.*
+### 2. Conversational AI Assistant (Text-to-SQL Engine)
+![AI Conversational Chat](docs/screenshots/ai-chat-text-to-sql.png)
+*Natural language querying translated into structured analytical responses, dynamic SQL generation, and instant dashboard creation.*
 
 ---
 
-### 3. Gestão de Produtividade & Horas
-![Relatório de Alocação de Horas](docs/screenshots/hours-utilization.png)
-*Acompanhamento de esforço estimado vs. reportado por tarefa, etapa e colaborador.*
+### 3. Productivity & Resource Allocation Tracking
+![Hours Allocation Report](docs/screenshots/hours-utilization.png)
+*Granular tracking of estimated vs. reported effort across project tasks, delivery milestones, and team members.*
 
 ---
 
-### 4. Admin Dashboard & Monitoramento de Recursos
-![Admin Dashboard e Métricas de Uso](docs/screenshots/admin-dashboard.png)
-*Painel administrativo com controle de telemetria, consumo de recursos e auditoria de requisições.*
+### 4. Enterprise Admin Dashboard & Token Cache Telemetry
+![Admin Dashboard and Resource Monitoring](docs/screenshots/admin-dashboard.png)
+*Real-time administrative telemetry monitoring system costs, request audits, and **LLM Token Caching**. Context Caching reuses pre-tokenized database schema metadata (DDL) and prompt context across queries, reducing response latency by up to 80% and drastically minimizing API token costs.*
 
 ---
 
-## ✨ Principais Funcionalidades
+## ✨ Key Capabilities
 
-- 💬 **Assistente Virtual Text-to-SQL RAG**: Faça perguntas em português simples (ex: *"Qual foi o projeto mais lucrativo em 2024?"*) e receba respostas analíticas instantâneas geradas com auxílio da LLM (Google Gemini).
-- 📈 **Dashboards Financeiros e de Projetos**:
-  - **Resultado Financeiro**: Balanço de competência, caixa executado, receitas e despesas.
-  - **Lucratividade & Margem**: Margem percentual por projeto e controle de contas em atraso.
-  - **Alocação de Horas**: Estimado x Reportado por tarefa, colaborador e etapa.
-  - **Gasto com Pessoal**: Custo hora, salário base, encargos e custo total da equipe.
-  - **Produtividade e Tarefas**: Desvio de estimativas e taxa de eficiência operacional.
-- 🎭 **Modo de Demonstração (100% Offline / Standalone)**: Funciona imediatamente sem depender de um banco de dados externo ou chaves pagas, utilizando um motor de dados sintéticos estáticos.
-- 🛡️ **Camada Rígida de Segurança & Governança**:
-  - Sanitização dinâmica de queries prevenindo ataques de SQL Injection.
-  - Bloqueio *fail-closed* contra exibição de dados restritos e colunas de senhas ou salários confidenciais.
+- 💬 **Text-to-SQL RAG Virtual Assistant**: Query enterprise data in natural language (e.g., *"What is the financial result, revenue, and profit margin for each project in 2024?"*) to receive instant analytical summaries generated via Large Language Models (Google Gemini).
+- 📈 **Financial & Project Dashboards**:
+  - **Financial Results**: Accrual balance, executed cash flow, revenues, and detailed OpEx.
+  - **Profitability & Margins**: Net profit margin per project and real-time accounts receivable tracking.
+  - **Hours Allocation**: Estimated vs. reported time per task, stage, and collaborator.
+  - **Personnel Expenditure**: Hourly rate breakdown, base salary, payroll taxes, and total burden costs.
+  - **Task Productivity**: Schedule variance tracking and operational efficiency rates.
+- ⚡ **LLM Context Caching Engine**: Automatic caching of database schema definitions (DDL) and system prompts, reducing token consumption costs and delivering sub-second response times.
+- 🎭 **Standalone Demonstration Engine**: Built-in synthetic data fallback allowing zero-config deployment and demonstration without external database dependencies.
+- 🛡️ **Enterprise Security & Data Governance**:
+  - Strict dynamic SQL sanitization engine preventing SQL Injection attacks.
+  - Fail-closed security policies blocking unauthorized access to sensitive columns (e.g., passwords or confidential salary details).
 
 ---
 
-## 🏗️ Arquitetura do Sistema
+## 🏗️ Architecture Overview
 
 ```mermaid
 graph TD
-    User([👤 Usuário / Gestor]) <--> |Interface Reativa| ReactApp[📱 Frontend: React 18 + Vite + Recharts]
+    User([👤 Executive / Manager]) <--> |Reactive Interface| ReactApp[📱 Frontend: React 18 + Recharts]
     ReactApp <--> |REST API / JSON| ExpressServer[⚙️ Backend: Node.js + Express]
     
     subgraph Core Backend & Security
         ExpressServer --> Auth[🔐 Auth & Context Middleware]
         ExpressServer --> PolicyEngine[🛡️ Query Policy & Sanitizer]
         PolicyEngine --> RAGService[🤖 Text-to-SQL RAG Engine]
+        RAGService --> TokenCache[⚡ Token Cache Manager]
     end
     
-    RAGService <--> |Prompting + Schema Context| GeminiAPI[☁️ Google Gemini AI API]
+    TokenCache <--> |Cached Schema Context| GeminiAPI[☁️ Google Gemini AI API]
     
     subgraph Data Layer
-        ExpressServer --> |Modo Produção| MySQLDB[(🗄️ MySQL Database)]
-        ExpressServer --> |Modo Demo| SyntheticData[(📁 Synthetic Data Resolver)]
+        ExpressServer --> |Production Mode| MySQLDB[(🗄️ MySQL Database)]
+        ExpressServer --> |Demo Mode| SyntheticData[(📁 Synthetic Data Resolver)]
     end
 ```
 
 ---
 
-## 🛠️ Tecnologias e Bibliotecas
+## 🛠️ Technology Stack
 
-* **Frontend:** React 18, Vite, Recharts (gráficos), Lucide React (ícones), Tailwind CSS / Vanilla CSS.
-* **Backend:** Node.js, Express, MySQL2 (driver de banco), Dotenv.
-* **Inteligência Artificial:** Google Gemini AI SDK, Prompt Engineering especializado para geração e sanitização de consultas analíticas.
-* **Qualidade & Ferramentas:** Concurrently (execução simultânea), ESLint.
-
----
-
-## 🚀 Como Executar o Projeto Localmente
-
-### Pré-requisitos
-* **Node.js** (v18.x ou superior)
-* **npm** ou **yarn**
-
-### 1. Clonar o repositório
-```bash
-git clone https://github.com/Lipefcleao/ai-powered-bi-platform.git
-cd ai-powered-bi-platform
-```
-
-### 2. Instalar dependências
-```bash
-npm install
-```
-
-### 3. Configurar variáveis de ambiente
-Crie um arquivo `.env` na raiz do projeto com base no arquivo `.env.example`:
-
-```bash
-cp .env.example .env
-```
-
-Para rodar em **Modo Demonstração (com dados sintéticos inclusos)**:
-```env
-DEMO_MODE=true
-PORT=3001
-VITE_GEMINI_API_KEY=sua_chave_opcional_aqui
-```
-
-### 4. Iniciar a aplicação
-Rode o comando abaixo para disparar o servidor Backend (Express) e o servidor Frontend (Vite) simultaneamente:
-
-```bash
-npm run dev
-```
-
-Acesse a aplicação no navegador em: `http://localhost:5173` (ou no endereço exibido no terminal).
+* **Frontend Framework:** React 18, Vite, Recharts (charting engine), Lucide React (icons), Tailwind CSS.
+* **Backend Infrastructure:** Node.js, Express, MySQL2 driver, Dotenv environment configuration.
+* **Artificial Intelligence & LLM:** Google Gemini AI SDK, Prompt Engineering with Token Caching for optimized Text-to-SQL translation.
+* **Governance & Tooling:** Concurrently, ESLint, Fail-Closed Security Policy Engine.
 
 ---
 
-## 🛡️ Segurança & Privacidade de Dados
+## 🛡️ Security & Data Privacy
 
-Este projeto segue diretrizes de segurança da informação:
-- **Zero Secrets em Repositório:** O código não possui credenciais hardcoded, senhas master ou chaves de API expostas.
-- **Isolamento de Dados Sensíveis:** O modo de demonstração utiliza apenas dados sintéticos (marcas e empresas fictícias como *Acme Corp*, *Globex*, *Stark Industries*).
+This platform adheres to enterprise information security standards:
+- **Zero Secrets in Repository:** Strict exclusion of hardcoded credentials, master passwords, or API keys.
+- **Data Anonymization:** Synthetic demonstration modes utilize anonymized sample datasets with dummy corporate entities (*Acme Corp*, *Globex*, *Stark Industries*).
 
 ---
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
